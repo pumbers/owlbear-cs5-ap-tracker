@@ -27,7 +27,7 @@
   </p>
 </main>
 
-<style>
+<style lang="postcss">
   .logo {
     height: 6em;
     padding: 1.5em;

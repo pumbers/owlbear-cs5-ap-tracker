@@ -1,10 +1,10 @@
 {
-  "name": "Hello, World!",
+  "name": "Chivalry & Sorcery 5e BAP Tracker",
   "version": "1.0.0",
   "manifest_version": 1,
   "action": {
-    "title": "Hello, World!",
-    "icon": "/icon.svg",
+    "title": "C&S 5e BAP",
+    "icon": "/swordman.svg",
     "popover": "/",
     "height": 600,
     "width": 400

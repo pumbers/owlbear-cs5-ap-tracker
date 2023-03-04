@@ -46,22 +46,24 @@ body {
 }
 
 @layer utilities {
-  .popover.tracker {
-    h1 {
-      @apply w-full text-center font-bold mb-2;
-    }
-    table {
-      @apply text-sm;
-    }
-    tr:nth-child(even) {
-      background-color: rgba(80, 80, 80, 0.9);
-    }
-    th {
-      @apply text-left font-bold py-1 px-2;
-      background-color: rgba(140, 140, 140, 0.9);
-    }
-    td {
-      @apply py-1 px-2;
+  .popover {
+    &.tracker {
+      h1 {
+        @apply w-full font-bold mb-2;
+      }
+      table {
+        @apply text-sm;
+      }
+      tr:nth-child(even) {
+        background-color: rgba(80, 80, 80, 0.9);
+      }
+      th {
+        @apply text-left font-bold py-1 px-2;
+        background-color: rgba(140, 140, 140, 0.9);
+      }
+      td {
+        @apply py-1 px-2;
+      }
     }
   }
 }

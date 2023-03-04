@@ -23,7 +23,7 @@
           held: metadata.held,
         };
       })
-      .sort((a, b) => parseFloat(b.ap) - parseFloat(a.ap));
+      .sort((a, b) => parseFloat(b.ap) - parseFloat(a.ap) || parseFloat(b.bap) - parseFloat(a.bap));
   };
 
   // When OBR is ready...
@@ -92,7 +92,18 @@
 </script>
 
 <div class="popover tracker">
-  <h1>Combat Tracker</h1>
+  <div class="flex justify-between">
+    <h1>Action Points</h1>
+    <img
+      src="/info.svg"
+      class="w-4"
+      alt="Information"
+      title="Use the dice icon to roll AP for a round, GM's can roll for everyone. Cursor over a character's AP and select to spend AP, click fist icon to hold up to 10 AP until next round."
+    />
+  </div>
+  {#if initiativeItems.length === 0}
+    <p class="text-xs text-gray-400">Add characters from their context menu to start tracking AP & initiative.</p>
+  {/if}
   <table class="w-full mt-4 table-auto">
     <colgroup>
       <col class="w-0" />
@@ -124,7 +135,7 @@
               <img src="/d10.svg" alt="" /></button
             ></td
           >
-          <td
+          <td class="text-center"
             ><div class="relative inline-block group w-full">
               <button>{item.ap}</button>
               <div class="hidden absolute w-15 z-10 group-hover:block bg-violet-500/100">
@@ -132,7 +143,7 @@
                   <!-- svelte-ignore a11y-missing-attribute -->
                   <!-- svelte-ignore a11y-click-events-have-key-events -->
                   <a
-                    class="block no-underline p-1 hover:bg-violet-600/100 cursor-pointer"
+                    class="block no-underline p-1 hover:bg-violet-700/100 cursor-pointer"
                     on:click={spendAP(item, spend)}>Spend&nbsp;{spend}</a
                   >
                 {/each}
@@ -141,13 +152,15 @@
           >
           <!-- <td>{item.ap}</td> -->
           <td>{item.name}</td>
-          <td>{item.bap}</td>
-          <td>
+          <td class="text-center"> {item.bap}</td>
+          <td class="text-center">
             {#if item.held}
               {item.held}
             {:else}
-              <button class="w-4 m-1" title="Hold remaining AP (Max 10)" on:click={holdAP(item, item.ap)}
-                ><img src="/fist.svg" alt="" /></button
+              <button
+                class="w-4 m-1"
+                title="Hold remaining AP (Max 10) until next round"
+                on:click={holdAP(item, item.ap)}><img src="/fist.svg" alt="" /></button
               >
             {/if}
           </td>

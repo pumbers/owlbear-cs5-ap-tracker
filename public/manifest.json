@@ -1,12 +1,15 @@
 {
-  "name": "Chivalry & Sorcery 5e BAP Tracker",
+  "name": "Chivalry & Sorcery 5e AP Tracker",
   "version": "1.0.0",
   "manifest_version": 1,
+  "author": "Code Theoretic Inc",
+  "icon": "/icon.svg",
+  "description": "A simple Action Point & initiative tracker for Chivalry & Sorcery 5e.",
   "action": {
-    "title": "C&S 5e BAP",
+    "title": "C&S 5e AP Tracker",
     "icon": "/swordman.svg",
     "popover": "/",
     "height": 600,
-    "width": 400
+    "width": 320
   }
 }

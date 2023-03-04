@@ -8,7 +8,7 @@ export function setupContextMenu() {
     icons: [
       {
         icon: "/add.svg",
-        label: "Add to Initiative",
+        label: "Add to AP Tracker",
         filter: {
           every: [
             { key: "layer", value: "CHARACTER" },
@@ -18,7 +18,7 @@ export function setupContextMenu() {
       },
       {
         icon: "/remove.svg",
-        label: "Remove from Initiative",
+        label: "Remove from AP Tracker",
         filter: {
           every: [{ key: "layer", value: "CHARACTER" }],
         },
@@ -28,16 +28,18 @@ export function setupContextMenu() {
       const addToBAP = context.items.every((item) => item.metadata[`${ID}/metadata`] === undefined);
       if (addToBAP) {
         const bap = window.prompt("Enter the character's BAP");
-        OBR.scene.items.updateItems(context.items, (items) => {
-          for (let item of items) {
-            item.metadata[`${ID}/metadata`] = {
-              bap,
-              roll: 0,
-              ap: 0,
-              held: 0,
-            };
-          }
-        });
+        if (bap) {
+          OBR.scene.items.updateItems(context.items, (items) => {
+            for (let item of items) {
+              item.metadata[`${ID}/metadata`] = {
+                bap,
+                roll: 0,
+                ap: 0,
+                held: 0,
+              };
+            }
+          });
+        }
       } else {
         OBR.scene.items.updateItems(context.items, (items) => {
           for (let item of items) {

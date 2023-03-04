@@ -1,47 +1,29 @@
-# Svelte + Vite
+# Chivalry & Sorcery 5th Edition Action Points Tracker
 
-This template should help get you started developing with Svelte in Vite.
+Running C&S combat and keeping track of the number of Action Points each character has, and their resulting initiative order, can be tricky.
 
-## Recommended IDE Setup
+This AP tracker for Owlbear Rodeo 2 automates much of that process and allows GM's & Players to easily manage their character's AP.
 
-[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode).
+The extension can be added by following the instructions in the [Owlbear Rodeo Guide](https://extensions.owlbear.rodeo/guide).
 
-## Need an official Svelte framework?
+## Using the Tracker
 
-Check out [SvelteKit](https://github.com/sveltejs/kit#readme), which is also powered by Vite. Deploy anywhere with its serverless-first approach and adapt to various platforms, with out of the box support for TypeScript, SCSS, and Less, and easily-added support for mdsvex, GraphQL, PostCSS, Tailwind CSS, and more.
+<img src="screenshot_contextmenu.png" width="400">
 
-## Technical considerations
+Characters can be added to the tracker using the context menu for their map icon. Click the <img src="public/swordman.svg" width="12"> icon and enter the characters Base Action Points (BAP).
 
-**Why use this over SvelteKit?**
+The popover is opened using the same <img src="public/swordman.svg" width="12"> icon on the Owlbear Rodeo menu at top left.
 
-- It brings its own routing solution which might not be preferable for some users.
-- It is first and foremost a framework that just happens to use Vite under the hood, not a Vite app.
+<img src="screenshot_popover.png" width="320">
 
-This template contains as little as possible to get started with Vite + Svelte, while taking into account the developer experience with regards to HMR and intellisense. It demonstrates capabilities on par with the other `create-vite` templates and is a good starting point for beginners dipping their toes into a Vite + Svelte project.
+The AP table shows a character's current Action Points, their name & Base Action Points, and whether they have held any AP over to the next round.
 
-Should you later need the extended capabilities and extensibility provided by SvelteKit, the template has been structured similarly to SvelteKit so that it is easy to migrate.
+Players can roll 1D10 for their AP at the start of a round using the <img src="public/d10.svg" width="12"> icon next to their character, as can the GM for NPC's. The GM also has an icon in the table header which can be used to roll for all characters at once.
 
-**Why `global.d.ts` instead of `compilerOptions.types` inside `jsconfig.json` or `tsconfig.json`?**
+The list will automatically sort on the highest available AP from top to bottom. Characters with AP held to the next round will show 0 available AP and a number in the Held column.
 
-Setting `compilerOptions.types` shuts out all other types not explicitly listed in the configuration. Using triple-slash references keeps the default TypeScript setting of accepting type information from the entire workspace, while also adding `svelte` and `vite/client` type information.
+For instructions during play, hover your cursor over the <img src="public/info.svg" width="12"> icon.
 
-**Why include `.vscode/extensions.json`?**
+<img src="screenshot_spending.png" width="320">
 
-Other templates indirectly recommend extensions via the README, but this file allows VS Code to prompt the user to install the recommended extension upon opening the project.
-
-**Why enable `checkJs` in the JS template?**
-
-It is likely that most cases of changing variable types in runtime are likely to be accidental, rather than deliberate. This provides advanced typechecking out of the box. Should you like to take advantage of the dynamically-typed nature of JavaScript, it is trivial to change the configuration.
-
-**Why is HMR not preserving my local component state?**
-
-HMR state preservation comes with a number of gotchas! It has been disabled by default in both `svelte-hmr` and `@sveltejs/vite-plugin-svelte` due to its often surprising behavior. You can read the details [here](https://github.com/rixo/svelte-hmr#svelte-hmr).
-
-If you have state that's important to retain within a component, consider creating an external store which would not be replaced by HMR.
-
-```js
-// store.js
-// An extremely simple external store
-import { writable } from 'svelte/store'
-export default writable(0)
-```
+Players and the GM can spend AP by hovering the cursor over their characxter's current AP value and selecting the number of AP they want to spend in an action phase - up to their available AP or 10. AP totals and table order will be adjusted automatically.

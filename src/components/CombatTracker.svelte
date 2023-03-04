@@ -48,6 +48,7 @@
       for (let update of updates) {
         update.metadata[`${ID}/metadata`].ap =
           parseInt(item.bap) + parseInt(item.held) + Math.floor(Math.random() * 10);
+        update.metadata[`${ID}/metadata`].held = 0;
       }
     });
   };
@@ -62,15 +63,44 @@
           const original = initiativeItems[i];
           update.metadata[`${ID}/metadata`].ap =
             parseInt(original.bap) + parseInt(original.held) + Math.floor(Math.random() * 10);
+          update.metadata[`${ID}/metadata`].held = 0;
         }
       }
     );
+  };
+
+  // Spend AP
+  const spendAP = (item, spend) => {
+    console.log("spendAP()", item, spend);
+    OBR.scene.items.updateItems([item.id], (updates) => {
+      for (let update of updates) {
+        update.metadata[`${ID}/metadata`].ap = parseInt(item.ap) - spend;
+      }
+    });
+  };
+
+  // Hold AP to next round
+  const holdAP = (item, ap) => {
+    console.log("holdAP()", item, ap);
+    OBR.scene.items.updateItems([item.id], (updates) => {
+      for (let update of updates) {
+        update.metadata[`${ID}/metadata`].held = Math.min(ap, 10);
+        update.metadata[`${ID}/metadata`].ap = 0;
+      }
+    });
   };
 </script>
 
 <div class="popover tracker">
   <h1>Combat Tracker</h1>
   <table class="w-full mt-4 table-auto">
+    <colgroup>
+      <col class="w-0" />
+      <col class="w-0" />
+      <col class="w-full" />
+      <col class="w-0" />
+      <col class="w-0" />
+    </colgroup>
     <thead>
       <tr>
         <th>
@@ -94,10 +124,33 @@
               <img src="/d10.svg" alt="" /></button
             ></td
           >
-          <td>{item.ap}</td>
+          <td
+            ><div class="relative inline-block group w-full">
+              <button>{item.ap}</button>
+              <div class="hidden absolute w-15 z-10 group-hover:block bg-violet-500/100">
+                {#each Array.from({ length: Math.min(item.ap, 10) }, (_, i) => i + 1) as spend}
+                  <!-- svelte-ignore a11y-missing-attribute -->
+                  <!-- svelte-ignore a11y-click-events-have-key-events -->
+                  <a
+                    class="block no-underline p-1 hover:bg-violet-600/100 cursor-pointer"
+                    on:click={spendAP(item, spend)}>Spend&nbsp;{spend}</a
+                  >
+                {/each}
+              </div>
+            </div></td
+          >
+          <!-- <td>{item.ap}</td> -->
           <td>{item.name}</td>
           <td>{item.bap}</td>
-          <td>{item.held}</td>
+          <td>
+            {#if item.held}
+              {item.held}
+            {:else}
+              <button class="w-4 m-1" title="Hold remaining AP (Max 10)" on:click={holdAP(item, item.ap)}
+                ><img src="/fist.svg" alt="" /></button
+              >
+            {/if}
+          </td>
         </tr>
       {/each}
     </tbody>

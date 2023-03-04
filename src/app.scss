@@ -2,18 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  line-height: 1.5;
-  font-weight: 400;
+$obr-white: rgba(255, 255, 255, 1);
+$obr-grey: rgba(34, 38, 57, 0.9);
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+  color: white;
+}
+
+:not(html):not(body)::-webkit-scrollbar {
+  background-color: transparent;
+  border-radius: 100px;
+}
+:not(html):not(body)::-webkit-scrollbar:vertical {
+  width: 10px;
+}
+:not(html):not(body)::-webkit-scrollbar:horizontal {
+  height: 10px;
+}
+:not(html):not(body)::-webkit-scrollbar:hover {
+  background-color: rgba(255, 255, 255, 0.09);
+}
+
+:not(html):not(body)::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  background-clip: padding-box;
+  border: 2px solid transparent;
+}
+:not(html):not(body)::-webkit-scrollbar-thumb:vertical {
+  min-height: 10px;
+}
+
+:not(html):not(body)::-webkit-scrollbar-thumb:horizontal {
+  min-width: 10px;
+}
+:not(html):not(body)::-webkit-scrollbar-thumb:active {
+  background-color: rgba(255, 255, 255, 0.61);
 }
 
 @layer utilities {
@@ -24,25 +53,15 @@
     table {
       @apply text-sm;
     }
-    th {
-      @apply text-left font-bold;
-      background-color: rgba(170, 170, 170, 0.87);
-    }
     tr:nth-child(even) {
-      background-color: rgba(80, 80, 80, 0.87);
+      background-color: rgba(80, 80, 80, 0.9);
     }
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
+    th {
+      @apply text-left font-bold py-1 px-2;
+      background-color: rgba(140, 140, 140, 0.9);
+    }
+    td {
+      @apply py-1 px-2;
+    }
   }
 }

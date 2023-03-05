@@ -164,3 +164,19 @@
     </tbody>
   </table>
 </div>
+
+<style>
+  h1 {
+    @apply w-full font-bold mb-2;
+  }
+  table {
+    @apply text-sm;
+  }
+  th {
+    @apply text-left font-bold py-1 px-2;
+    background-color: rgba(140, 140, 140, 0.9);
+  }
+  td {
+    @apply py-1 px-2;
+  }
+</style>

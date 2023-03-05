@@ -1,6 +1,6 @@
 {
   "name": "Chivalry & Sorcery 5e AP Tracker",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "manifest_version": 1,
   "author": "Code Theoretic Inc",
   "icon": "/icon.svg",
@@ -10,6 +10,6 @@
     "icon": "/swordman.svg",
     "popover": "/",
     "height": 600,
-    "width": 320
+    "width": 350
   }
 }

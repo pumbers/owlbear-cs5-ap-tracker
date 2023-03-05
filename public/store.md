@@ -38,3 +38,11 @@ For instructions during play, hover your cursor over the <img src="info.svg" wid
 <img src="screenshot_spending.webp"/>
 
 Players and the GM can spend AP by hovering the cursor over their character's current AP value and selecting the number of AP they want to spend in an action phase - up to their available AP or BAP. AP totals and table order will be adjusted automatically.
+
+## AP Modifiers
+
+AP Modifiers are applied using Owlbear Rodeo attachments, just drag the relevant attachment onto a character to trigger an appropriate modifier. Remove the attachment to remove the modifier.
+
+- **Exhausted** applies a -10 AP penalty for being fatigued
+- **Incapacitated** drops AP to 0
+- **Dead** drops AP to 0

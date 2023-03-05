@@ -24,4 +24,4 @@ For instructions during play, hover your cursor over the <img src="public/info.s
 
 <img src="public/screenshot_spending.webp"/>
 
-Players and the GM can spend AP by hovering the cursor over their character's current AP value and selecting the number of AP they want to spend in an action phase - up to their available AP or 10. AP totals and table order will be adjusted automatically.
+Players and the GM can spend AP by hovering the cursor over their character's current AP value and selecting the number of AP they want to spend in an action phase - up to their available AP or BAP. AP totals and table order will be adjusted automatically.

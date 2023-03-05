@@ -14,7 +14,6 @@
       .filter((item) => item.layer === "CHARACTER" && item.metadata[`${ID}/metadata`])
       .map((item) => {
         const metadata = item.metadata[`${ID}/metadata`];
-        console.log("adding", item);
         return {
           id: item.id,
           name: item.text.plainText || item.name,
@@ -28,8 +27,6 @@
 
   // When OBR is ready...
   OBR.onReady(async () => {
-    console.log("onReady()", await OBR.scene.items.getItems());
-
     // Find the player role
     playerRole = OBR.player.getRole();
 
@@ -71,7 +68,6 @@
 
   // Spend AP
   const spendAP = (item, spend) => {
-    console.log("spendAP()", item, spend);
     OBR.scene.items.updateItems([item.id], (updates) => {
       for (let update of updates) {
         update.metadata[`${ID}/metadata`].ap = parseInt(item.ap) - spend;
@@ -80,11 +76,10 @@
   };
 
   // Hold AP to next round
-  const holdAP = (item, ap) => {
-    console.log("holdAP()", item, ap);
+  const holdAP = (item, ap, bap) => {
     OBR.scene.items.updateItems([item.id], (updates) => {
       for (let update of updates) {
-        update.metadata[`${ID}/metadata`].held = Math.min(ap, 10);
+        update.metadata[`${ID}/metadata`].held = Math.min(ap, bap);
         update.metadata[`${ID}/metadata`].ap = 0;
       }
     });
@@ -98,7 +93,7 @@
       src="/info.svg"
       class="w-4"
       alt="Information"
-      title="Use the dice icon to roll AP for a round, GM's can roll for everyone. Cursor over a character's AP and select to spend AP, click fist icon to hold up to 10 AP until next round."
+      title="Use the dice icon to roll AP for a round, GM's can roll for everyone. Cursor over a character's AP and select to spend AP, click fist icon to hold up to their BAP in AP until next round."
     />
   </div>
   {#if initiativeItems.length === 0}
@@ -159,8 +154,8 @@
             {:else}
               <button
                 class="w-4 m-1"
-                title="Hold remaining AP (Max 10) until next round"
-                on:click={holdAP(item, item.ap)}><img src="/fist.svg" alt="" /></button
+                title="Hold remaining AP (Max {item.bap}) until next round"
+                on:click={holdAP(item, item.ap, item.bap)}><img src="/fist.svg" alt="" /></button
               >
             {/if}
           </td>

@@ -1,15 +1,15 @@
 {
   "name": "Chivalry & Sorcery 5e AP Tracker",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "manifest_version": 1,
   "author": "Code Theoretic Inc",
   "icon": "/icon.svg",
   "description": "A simple Action Point & initiative tracker for Chivalry & Sorcery 5e.",
   "action": {
     "title": "C&S 5e AP Tracker",
-    "icon": "/swordman.svg",
-    "popover": "/",
+    "icon": "/icons/swordman.svg",
+    "popover": "/popover",
     "height": 600,
-    "width": 350
+    "width": 380
   }
 }

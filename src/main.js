@@ -1,15 +1,10 @@
+// @ts-nocheck
+
 import "./app.scss";
-import Popover from "./components/Popover.svelte";
+import App from "./App.svelte";
 
-import OBR from "@owlbear-rodeo/sdk";
-import { setupContextMenu } from "./lib/context-menu";
-
-const app = new Popover({
+const app = new App({
   target: document.getElementById("app"),
-});
-
-OBR.onReady(() => {
-  setupContextMenu();
 });
 
 export default app;

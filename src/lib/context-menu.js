@@ -4,10 +4,10 @@ const ID = "com.codetheoretic.cs5.ap-tracker";
 
 export function setupContextMenu() {
   OBR.contextMenu.create({
-    id: `${ID}/context-menu`,
+    id: `${ID}/add-to-ap-tracker`,
     icons: [
       {
-        icon: "/add.svg",
+        icon: "/icons/add.svg",
         label: "Add to AP Tracker",
         filter: {
           every: [
@@ -17,7 +17,7 @@ export function setupContextMenu() {
         },
       },
       {
-        icon: "/remove.svg",
+        icon: "/icons/remove.svg",
         label: "Remove from AP Tracker",
         filter: {
           every: [{ key: "layer", value: "CHARACTER" }],
@@ -25,15 +25,14 @@ export function setupContextMenu() {
       },
     ],
     onClick(context) {
-      const addToBAP = context.items.every((item) => item.metadata[`${ID}/metadata`] === undefined);
-      if (addToBAP) {
+      const addToTracker = context.items.every((item) => item.metadata[`${ID}/metadata`] === undefined);
+      if (addToTracker) {
         const bap = window.prompt("Enter the character's BAP");
         if (bap) {
           OBR.scene.items.updateItems(context.items, (items) => {
             for (let item of items) {
               item.metadata[`${ID}/metadata`] = {
                 bap,
-                roll: 0,
                 ap: 0,
                 held: 0,
               };
@@ -47,6 +46,27 @@ export function setupContextMenu() {
           }
         });
       }
+    },
+  });
+  OBR.contextMenu.create({
+    id: `${ID}/armour-menu`,
+    icons: [
+      {
+        icon: "/icons/lamellar.svg",
+        label: "Select armour type for AP Tracker",
+        filter: {
+          every: [{ key: "layer", value: "CHARACTER" }],
+        },
+      },
+    ],
+    onClick(context, elementId) {
+      OBR.popover.open({
+        id: `${ID}/set-armour`,
+        url: `/set-armor/${context.items[0].id}`,
+        height: 25,
+        width: 150,
+        anchorElementId: elementId,
+      });
     },
   });
 }

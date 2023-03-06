@@ -9,6 +9,6 @@
 <Router {url}>
   <div>
     <Route path="/popover"><Popover /></Route>
-    <Route path="/set-armor/:id" let:params><Modal id={params.id} /></Route>
+    <Route path="/set-armor/:ids" let:params><Modal ids={params.ids} /></Route>
   </div>
 </Router>

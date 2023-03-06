@@ -40,12 +40,14 @@
   };
 
   // When OBR is ready...
-  OBR.onReady(async () => {
+  OBR.onReady(() => {
     // Find the player role
     playerRole = OBR.player.getRole();
 
     // Build an initial initiative list when the popover loads
-    initiativeItems = await buildInitiativeList(await OBR.scene.items.getItems());
+    OBR.scene.items.getItems().then(async (items) => {
+      initiativeItems = await buildInitiativeList(items);
+    });
 
     // Rebuild the list if any items change
     OBR.scene.items.onChange(async (items) => {
@@ -143,101 +145,105 @@
       title="Use the dice icon to roll AP for a round, GM's can roll for everyone. Cursor over a character's AP and select to spend AP, click fist icon to hold up to their BAP in AP until next round. Drag the 'Incapacitated', 'Exhausted' or 'Dead' attachments onto a character to trigger those AP modifiers. Use the icon context menu to set the armour type."
     />
   </div>
-  {#if initiativeItems.length === 0}
-    <p class="text-xs text-gray-400">Add characters from their context menu to start tracking AP & initiative.</p>
-  {/if}
-  <table class="w-full mt-4 table-auto">
-    <colgroup>
-      <col class="w-0" />
-      <col class="w-0" />
-      <col class="w-full" />
-      <col class="w-0" />
-      <col class="w-0" />
-      <col class="w-0" />
-      <col class="w-0" />
-    </colgroup>
-    <thead>
-      <tr>
-        <th>
-          {#await playerRole then role}
-            {#if role === "GM"}
-              <button class="w-4 m-1" title="Roll All" on:click={rollAll}><img src="/icons/d10.svg" alt="" /></button>
-            {/if}
-          {/await}
-        </th>
-        <th>AP</th>
-        <th>Name</th>
-        <th>BAP</th>
-        <th colspan="2">Mod</th>
-        <th>Held</th>
-      </tr>
-    </thead>
-    <tbody>
-      {#each initiativeItems as item}
+  {#await initiativeItems}
+    <h3>Loading...</h3>
+  {:then initiativeItems}
+    {#if initiativeItems.length === 0}
+      <p class="text-xs text-gray-400">Add characters from their context menu to start tracking AP & initiative.</p>
+    {/if}
+    <table class="w-full mt-4 table-auto">
+      <colgroup>
+        <col class="w-0" />
+        <col class="w-0" />
+        <col class="w-full" />
+        <col class="w-0" />
+        <col class="w-0" />
+        <col class="w-0" />
+        <col class="w-0" />
+      </colgroup>
+      <thead>
         <tr>
-          <td
-            ><button class="w-4 m-1" title="Roll AP" on:click={() => rollOne(item)}>
-              <img src="/icons/d10.svg" alt="" /></button
-            ></td
-          >
-          <td class="text-center"
-            ><div class="relative inline-block group w-full">
-              <button>{item.ap}</button>
-              <div class="hidden absolute w-15 z-10 group-hover:block bg-violet-500/100">
-                {#each Array.from({ length: Math.min(item.ap, 10) }, (_, i) => i + 1) as spend}
-                  <!-- svelte-ignore a11y-missing-attribute -->
-                  <!-- svelte-ignore a11y-click-events-have-key-events -->
-                  <a
-                    class="block no-underline p-1 hover:bg-violet-700/100 cursor-pointer"
-                    on:click={() => spendAP(item, spend)}>Spend&nbsp;{spend}</a
-                  >
-                {/each}
-              </div>
-            </div></td
-          >
-          <td>{item.name}</td>
-          <td class="text-center">{item.bap} </td>
-          <td class="text-center !pr-0">
-            <div class="w-4 my-1 mx-0">
-              {#if item.dead}
-                <img src="/icons/death-skull.svg" alt="" title="Dead 0 AP" />
-              {:else if item.incapacitated}
-                <img src="/icons/backstab.svg" alt="" title="Incapacitated 0 AP" />
-              {:else if item.fatigued}
-                <img src="/icons/despair.svg" alt="" title="Fatigued -10 AP" />
-              {:else}
-                <img src="/icons/swordman.svg" alt="" title="Fighting +1D10 AP" />
+          <th>
+            {#await playerRole then role}
+              {#if role === "GM"}
+                <button class="w-4 m-1" title="Roll All" on:click={rollAll}><img src="/icons/d10.svg" alt="" /></button>
               {/if}
-            </div>
-          </td>
-          <td class="text-center !pr-0">
-            <div class="w-4 my-1 mx-0">
-              {#if item.armour === "battle"}
-                <img src="/icons/breastplate.svg" alt="" title="Battle Armour -5 AP" />
-              {:else if item.armour === "heavy"}
-                <img src="/icons/lamellar.svg" alt="" title="Heavy Armour -3 AP" />
-              {:else if item.armour === "light"}
-                <img src="/icons/leather-armor.svg" alt="" title="Light Armour" />
-              {:else}
-                <img src="/icons/pierced-body.svg" alt="" title="No Armour +3 AP" />
-              {/if}
-            </div>
-          </td>
-          <td class="text-center">
-            {#if item.held}
-              {item.held}
-            {:else}
-              <button
-                class="w-4 m-1"
-                title="Hold remaining AP (Max {item.bap}) until next round"
-                on:click={() => holdAP(item, item.ap, item.bap)}><img src="/icons/fist.svg" alt="" /></button
-              >
-            {/if}
-          </td>
+            {/await}
+          </th>
+          <th>AP</th>
+          <th>Name</th>
+          <th>BAP</th>
+          <th colspan="2">Mod</th>
+          <th>Held</th>
         </tr>
-      {/each}
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        {#each initiativeItems as item}
+          <tr>
+            <td
+              ><button class="w-4 m-1" title="Roll AP" on:click={() => rollOne(item)}>
+                <img src="/icons/d10.svg" alt="" /></button
+              ></td
+            >
+            <td class="text-center"
+              ><div class="relative inline-block group w-full">
+                <button>{item.ap}</button>
+                <div class="hidden absolute w-15 z-10 group-hover:block bg-violet-500/100">
+                  {#each Array.from({ length: Math.min(item.ap, 10) }, (_, i) => i + 1) as spend}
+                    <!-- svelte-ignore a11y-missing-attribute -->
+                    <!-- svelte-ignore a11y-click-events-have-key-events -->
+                    <a
+                      class="block no-underline p-1 hover:bg-violet-700/100 cursor-pointer"
+                      on:click={() => spendAP(item, spend)}>Spend&nbsp;{spend}</a
+                    >
+                  {/each}
+                </div>
+              </div></td
+            >
+            <td>{item.name}</td>
+            <td class="text-center">{item.bap} </td>
+            <td class="text-center !pr-0">
+              <div class="w-4 my-1 mx-0">
+                {#if item.dead}
+                  <img src="/icons/death-skull.svg" alt="" title="Dead 0 AP" />
+                {:else if item.incapacitated}
+                  <img src="/icons/backstab.svg" alt="" title="Incapacitated 0 AP" />
+                {:else if item.fatigued}
+                  <img src="/icons/despair.svg" alt="" title="Fatigued -10 AP" />
+                {:else}
+                  <img src="/icons/swordman.svg" alt="" title="Fighting +1D10 AP" />
+                {/if}
+              </div>
+            </td>
+            <td class="text-center !pr-0">
+              <div class="w-4 my-1 mx-0">
+                {#if item.armour === "battle"}
+                  <img src="/icons/breastplate.svg" alt="" title="Battle Armour -5 AP" />
+                {:else if item.armour === "heavy"}
+                  <img src="/icons/lamellar.svg" alt="" title="Heavy Armour -3 AP" />
+                {:else if item.armour === "light"}
+                  <img src="/icons/leather-armor.svg" alt="" title="Light Armour" />
+                {:else}
+                  <img src="/icons/pierced-body.svg" alt="" title="No Armour +3 AP" />
+                {/if}
+              </div>
+            </td>
+            <td class="text-center">
+              {#if item.held}
+                {item.held}
+              {:else}
+                <button
+                  class="w-4 m-1"
+                  title="Hold remaining AP (Max {item.bap}) until next round"
+                  on:click={() => holdAP(item, item.ap, item.bap)}><img src="/icons/fist.svg" alt="" /></button
+                >
+              {/if}
+            </td>
+          </tr>
+        {/each}
+      </tbody>
+    </table>
+  {/await}
 </div>
 
 <style>

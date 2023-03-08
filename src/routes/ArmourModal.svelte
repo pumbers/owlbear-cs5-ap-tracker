@@ -2,12 +2,10 @@
   // @ts-nocheck
   import OBR from "@owlbear-rodeo/sdk";
 
-  export let ids;
-
   const ID = "com.codetheoretic.cs5.ap-tracker";
 
-  const selectArmour = (type) => {
-    OBR.scene.items.updateItems(ids.split(","), (updates) => {
+  const selectArmour = async (type) => {
+    OBR.scene.items.updateItems(await OBR.player.getSelection(), (updates) => {
       for (let update of updates) {
         update.metadata[`${ID}/metadata`].armour = type;
       }

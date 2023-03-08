@@ -21,7 +21,7 @@ The extension can be added by following the instructions in the [Owlbear Rodeo G
 
 <img src="screenshot_contextmenu.webp"/>
 
-Characters can be added to the tracker using the context menu for their map icon. Click the <img src="icons/swordman.svg" width="12"/> icon and enter the characters Base Action Points (BAP).
+Characters can be added to the tracker using the context menu for their map icon. Click the <img src="icons/swordman.svg" width="12"/> icon and enter the characters Base Action Points (BAP). Multiple characters can be added by selecting them as a group and then clicking the tracker icon, the same BAP will be applied to all of them. Multi-select can also be used to set an armour type (see below).
 
 The popover is opened using the same <img src="icons/swordman.svg" width="12"/> icon on the Owlbear Rodeo menu at top left.
 

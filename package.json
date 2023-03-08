@@ -1,7 +1,7 @@
 {
   "name": "owlbear-cs5-combat-tracker",
   "private": true,
-  "version": "1.2.4",
+  "version": "1.2.5",
   "type": "module",
   "license": "cc-by-4.0",
   "scripts": {

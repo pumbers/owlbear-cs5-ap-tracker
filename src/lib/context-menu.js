@@ -59,10 +59,10 @@ export function setupContextMenu() {
         },
       },
     ],
-    onClick(context, elementId) {
+    onClick(_, elementId) {
       OBR.popover.open({
         id: `${ID}/set-armour`,
-        url: `/set-armor/${context.items.map((item) => item.id).join(",")}`,
+        url: `/set-armor`,
         height: 25,
         width: 150,
         anchorElementId: elementId,

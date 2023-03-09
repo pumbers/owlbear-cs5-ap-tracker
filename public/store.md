@@ -2,11 +2,10 @@
 title: Chivalry & Sorcery 5th Edition Action Points Tracker
 description: A simple Action Point & initiative tracker for Chivalry & Sorcery 5e.
 author: Code Theoretic Inc
-image: https://raw.githubusercontent.com/pumbers/owlbear-cs5-ap-tracker/main/public/screenshot_popover.webp
+image: https://owlbear-cs5-ap-tracker.pages.dev/screenshot_popover.webp
 icon: https://owlbear-cs5-ap-tracker.pages.dev/icon.svg
 tags:
-  - c&s5e
-  - initiative
+  - combat
 manifest: https://owlbear-cs5-ap-tracker.pages.dev/manifest.json
 learn-more: https://github.com/pumbers/owlbear-cs5-ap-tracker
 ---

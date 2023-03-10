@@ -1,7 +1,7 @@
 ---
 title: Chivalry & Sorcery 5th Edition Action Points Tracker
 description: A simple Action Point & initiative tracker for Chivalry & Sorcery 5e.
-author: Code Theoretic Inc
+author: 3rdDog
 image: https://owlbear-cs5-ap-tracker.pages.dev/screenshot_popover.webp
 icon: https://owlbear-cs5-ap-tracker.pages.dev/icon.svg
 tags:
@@ -44,7 +44,7 @@ Players and the GM can spend AP by hovering the cursor over their character's cu
 
 The character's armour AP modifier _(Core Rulebook, pp 268)_ is applied by using the character icon's context menu to select an armour type (none, light, heavy, battle).
 
-Character status AP Modifiers _(Core Rulebook, pp 268)_ are applied using Owlbear Rodeo attachments, just drag the relevant attachment onto a character to trigger an appropriate modifier. Delete the attachment to remove the modifier.
+Character status AP Modifiers _(Core Rulebook, pp 268)_ are applied using Owlbear Rodeo status ring attachments, just drag the relevant attachment onto a character to trigger an appropriate modifier. Delete the attachment to remove the modifier. Note: you will need the Owlbear Rodeo **Status Rings** starter set installed.
 
 - **Exhausted** applies a -10 AP penalty for being fatigued
 - **Incapacitated** drops AP to 0

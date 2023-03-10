@@ -3,6 +3,7 @@
   "version": "1.2.5",
   "manifest_version": 1,
   "author": "Code Theoretic Inc",
+  "homepage_url": "https://github.com/pumbers/owlbear-cs5-ap-tracker",
   "icon": "/icon.svg",
   "description": "A simple Action Point & initiative tracker for Chivalry & Sorcery 5e.",
   "action": {

@@ -9,10 +9,8 @@
   let initiativeItems = [];
 
   // Build an initiative list from a set of items
-  const buildInitiativeList = async (items) => {
-    const attachments = (await OBR.scene.items.getItemAttachments(items.map((item) => item.id))).filter(
-      (attachment) => attachment.layer === "ATTACHMENT"
-    );
+  const buildInitiativeList = (items) => {
+    const attachments = items.filter((item) => item.layer === "ATTACHMENT");
     return items
       .filter((item) => item.layer === "CHARACTER" && item.metadata[`${ID}/metadata`])
       .map((item) => {
@@ -45,13 +43,13 @@
     playerRole = OBR.player.getRole();
 
     // Build an initial initiative list when the popover loads
-    OBR.scene.items.getItems().then(async (items) => {
-      initiativeItems = await buildInitiativeList(items);
+    OBR.scene.items.getItems().then((items) => {
+      initiativeItems = buildInitiativeList(items);
     });
 
     // Rebuild the list if any items change
-    OBR.scene.items.onChange(async (items) => {
-      initiativeItems = await buildInitiativeList(items);
+    OBR.scene.items.onChange((items) => {
+      initiativeItems = buildInitiativeList(items);
     });
   });
 

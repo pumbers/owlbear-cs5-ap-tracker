@@ -18,29 +18,29 @@ The extension can be added by following the instructions in the [Owlbear Rodeo G
 
 ## Using the Tracker
 
-<img src="screenshot_contextmenu.webp"/>
+<img src="https://raw.githubusercontent.com/pumbers/owlbear-cs5-ap-tracker/main/public/screenshot_contextmenu.webp"/>
 
-Characters can be added to the tracker using the context menu for their map icon. Click the <img src="icons/swordman.svg" width="12"/> icon and enter the characters Base Action Points (BAP). Multiple characters can be added by selecting them as a group and then clicking the tracker icon, the same BAP will be applied to all of them. Multi-select can also be used to set an armour type (see below).
+Characters can be added to the tracker using the context menu for their map icon. Click the <img src="https://raw.githubusercontent.com/pumbers/owlbear-cs5-ap-tracker/main/public/icons/swordman.svg" width="12"/> icon and enter the characters Base Action Points (BAP). Multiple characters can be added by selecting them as a group and then clicking the tracker icon, the same BAP will be applied to all of them. Multi-select can also be used to set an armour type (see below).
 
-The popover is opened using the same <img src="icons/swordman.svg" width="12"/> icon on the Owlbear Rodeo menu at top left.
+The popover is opened using the same <img src="https://raw.githubusercontent.com/pumbers/owlbear-cs5-ap-tracker/main/public/icons/swordman.svg" width="12"/> icon on the Owlbear Rodeo menu at top left.
 
-<img src="screenshot_popover.webp"/>
+<img src="https://raw.githubusercontent.com/pumbers/owlbear-cs5-ap-tracker/main/public/screenshot_popover.webp"/>
 
 The AP table shows a character's current Action Points, their name & Base Action Points, AP Modifiers for status & armour, and whether they have held any AP over to the next round.
 
-Players can roll 1D10 for their AP at the start of a round using the <img src="icons/d10.svg" width="12"/> icon next to their character, as can the GM for NPC's. The GM also has an icon in the table header which can be used to roll for all characters at once.
+Players can roll 1D10 for their AP at the start of a round using the <img src="https://raw.githubusercontent.com/pumbers/owlbear-cs5-ap-tracker/main/public/icons/d10.svg" width="12"/> icon next to their character, as can the GM for NPC's. The GM also has an icon in the table header which can be used to roll for all characters at once.
 
 The list will automatically sort on the highest available AP from top to bottom. Characters with AP held to the next round will show 0 available AP and a number in the Held column.
 
-For instructions during play, hover your cursor over the <img src="icons/info.svg" width="12"/> icon.
+For instructions during play, hover your cursor over the <img src="https://raw.githubusercontent.com/pumbers/owlbear-cs5-ap-tracker/main/public/icons/info.svg" width="12"/> icon.
 
-<img src="screenshot_spending.webp"/>
+<img src="https://raw.githubusercontent.com/pumbers/owlbear-cs5-ap-tracker/main/public/screenshot_spending.webp"/>
 
 Players and the GM can spend AP by hovering the cursor over their character's current AP value and selecting the number of AP they want to spend in an action phase - up to their available AP or 10. AP totals and table order will be adjusted automatically.
 
 ## AP Modifiers
 
-<img src="screenshot_armour.webp"/>
+<img src="https://raw.githubusercontent.com/pumbers/owlbear-cs5-ap-tracker/main/public/screenshot_armour.webp"/>
 
 The character's armour AP modifier _(Core Rulebook, pp 268)_ is applied by using the character icon's context menu to select an armour type (none, light, heavy, battle).
 

@@ -1,8 +1,7 @@
 <script>
   // @ts-nocheck
   import OBR from "@owlbear-rodeo/sdk";
-
-  const ID = "com.codetheoretic.cs5.ap-tracker";
+  import { ID } from "../config";
 
   const selectArmour = async (type) => {
     OBR.scene.items.updateItems(await OBR.player.getSelection(), (updates) => {

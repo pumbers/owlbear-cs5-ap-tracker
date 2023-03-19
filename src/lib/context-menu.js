@@ -1,6 +1,5 @@
 import OBR from "@owlbear-rodeo/sdk";
-
-const ID = "com.codetheoretic.cs5.ap-tracker";
+import { ID } from "../config";
 
 export function setupContextMenu() {
   OBR.contextMenu.create({

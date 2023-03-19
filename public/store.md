@@ -1,7 +1,7 @@
 ---
 title: Chivalry & Sorcery 5th Edition Action Points Tracker
 description: A simple Action Point & initiative tracker for Chivalry & Sorcery 5e.
-author: 3rdDog
+author: Code Theoretic
 image: https://owlbear-cs5-ap-tracker.pages.dev/screenshot_popover.webp
 icon: https://owlbear-cs5-ap-tracker.pages.dev/icon.svg
 tags:

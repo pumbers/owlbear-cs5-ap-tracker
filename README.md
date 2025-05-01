@@ -1,7 +1,38 @@
-# Chivalry & Sorcery 5th Edition Action Points Tracker
+# sv
 
-Running C&S combat and keeping track of the number of Action Points each character has, and their resulting initiative order, can be tricky. This AP tracker for Owlbear Rodeo 2 automates much of that process and allows GM's & Players to easily manage their character's AP.
+Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
 
-See the [Owlbear Rodeo Extensions Store page](public/store.md) for details on how to use the extension.
+## Creating a project
 
-The extension can be added by following the instructions in the [Owlbear Rodeo Guide](https://extensions.owlbear.rodeo/guide).
+If you're seeing this, you've probably already done this step. Congrats!
+
+```bash
+# create a new project in the current directory
+npx sv create
+
+# create a new project in my-app
+npx sv create my-app
+```
+
+## Developing
+
+Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+
+```bash
+npm run dev
+
+# or start the server and open the app in a new browser tab
+npm run dev -- --open
+```
+
+## Building
+
+To create a production version of your app:
+
+```bash
+npm run build
+```
+
+You can preview the production build with `npm run preview`.
+
+> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
